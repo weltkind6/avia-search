@@ -1,0 +1,23 @@
+.wrapper {
+    width: 900px;
+    height: 400px;
+    outline: 1px solid;
+}
+
+.header {
+    background: deepskyblue;
+    padding: 10px;
+    height: 100px;
+}
+
+.direction {
+
+}
+
+.info {
+
+}
+
+.changeButton {
+  background: tomato;
+}
