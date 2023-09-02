@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './styles.module.css'
 import {arrivalTimeHandler, formatToDate, generateRandomTime} from "../../../helpers/heplers";
 import {getTime} from "../../../helpers/heplers";
+import {Button} from "@mui/material";
+import CustomizedButtons from "../mui/Button/Button";
 
 const Ticket = ({ dataCopy }) => {
 
@@ -25,7 +27,7 @@ const Ticket = ({ dataCopy }) => {
                     depAirportName,
                     executor,
                 }) =>
-                <div>
+                <div className={styles.container}>
                 <div className={styles.header}>
                     <div className={styles.executor}>{executor[0]}</div>
                     <div>
@@ -46,9 +48,7 @@ const Ticket = ({ dataCopy }) => {
                     <div>Рейс выполняет: {executor[0]}</div>
                 </div>
                 <div className={styles.info}>
-                </div>
-                <div className={styles.changeButton}>
-                    выбрать
+                    <div className={styles.changeButton}>Выбрать</div>
                 </div>
             </div>)}
         </div>
