@@ -1026,7 +1026,7 @@
                                     [
                                     ],
                                     "departureDate" : "2020-08-18T08:30:00",
-                                    "stops" : 1,
+                                    "stops" : 0,
                                     "servicesDetails" :
                                     {
                                         "freeCabinLuggage" :
