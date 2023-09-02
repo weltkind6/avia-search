@@ -7,8 +7,25 @@
 .header {
     background: deepskyblue;
     padding: 10px;
-    height: 100px;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
 }
+.executor {
+    font-weight: bold;
+}
+
+.price {
+  display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
+}
+
+.description {
+  font-size: 14px;
+}
+
 
 .direction {
 

@@ -28,7 +28,8 @@ function App() {
         const arrivalDate = segments.flat().map(({ arrivalDate }) => arrivalDate);
         const travelDuration = segments.flat().map(({ travelDuration }) => travelDuration);
         const stops = segments.flat().map(({ stops }) => stops);
-        console.log('executor', executor)
+        console.log('travelDuration', travelDuration)
+
 
         return {
             currPrice: total.amount,
@@ -48,7 +49,7 @@ function App() {
     });
 
   return (
-    <div>
+    <div className="wrapper">
      <h1>Avia sales</h1>
         <SearchResult data={currData} dataCopy={dataCopy}/>
     </div>

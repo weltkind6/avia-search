@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from './styles.module.css'
-import formatToDate from "../../../helpers/heplers";
+import {arrivalTimeHandler, formatToDate, generateRandomTime} from "../../../helpers/heplers";
+import {getTime} from "../../../helpers/heplers";
 
 const Ticket = ({ dataCopy }) => {
+
+    const time = generateRandomTime()
+    console.log(time)
 
     return (
         <div className={styles.wrapper}>
@@ -23,23 +27,25 @@ const Ticket = ({ dataCopy }) => {
                 }) =>
                 <div>
                 <div className={styles.header}>
-                    <div>Logo</div>
-                    <div>{currPrice}</div>
+                    <div className={styles.executor}>{executor[0]}</div>
+                    <div>
+                        <div className={styles.price}>{currPrice} ₽</div>
+                        <div className={styles.description}>Стоимость для одного взрослого пассажира</div>
+                    </div>
                 </div>
                 <div className={styles.direction}>
-                    <div>arrival city: {arrCity[0]}</div>
-                    <div>depart city: {depCity[0]}</div>
-                    <div>depart airport uuid: {depAirport[0]}</div>
-                    <div>arrival airport uuid: {arrAirport[0]}</div>
-                    <div>depart airport name: {depAirportName[0]}</div>
-                    <div>arr airport name: {arrAirportName[0]}</div>
-                    <div>departureDate: {formatToDate(departureDate[0])}</div>
-                    <div>arrivalDate: {formatToDate(arrivalDate[0])}</div>
+                    <div>{depCity[0]}-{depAirportName[0]}-{depAirport[0]} =>
+                        {arrCity[0]}-{arrAirportName[0]}-{arrAirport[0]}
+                        <div>{time}-
+                            {formatToDate(departureDate[0])}
+                            -{getTime(travelDuration[0])}
+                            -{formatToDate(arrivalDate[0])}-{arrivalTimeHandler(time, travelDuration[0])}
+                            {stops[0] !== 0 ? <div>Пересадок: {stops[0]}</div> : <div>Без пересадок</div>}
+                        </div>
+                    </div>
                     <div>Рейс выполняет: {executor[0]}</div>
                 </div>
                 <div className={styles.info}>
-                    <div>travelDuration {travelDuration[0]}</div>
-                    {stops[0] !== 0 ? <div>Пересадок: {stops[0]}</div> : <div>Без пересадок</div>}
                 </div>
                 <div className={styles.changeButton}>
                     выбрать
