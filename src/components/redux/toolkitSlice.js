@@ -35,21 +35,24 @@ const dataCopy = mockData.map(({ price, legs }) => {
     };
 });
 
+
 const counterSlice = createSlice({
     name: 'counter',
     initialState: {
         data: dataCopy,
     },
     reducers: {
-        increment: state => {state.value += 1},
-        decrement: state => {state.value -= 1},
+        priceAscending: state => {
+            state.data.sort((a, b) => a.currPrice - b.currPrice);
+        },
+
     },
 });
+
+export const { increment, decrement, priceAscending } = counterSlice.actions;
+
+export default counterSlice.reducer;
 
 export const store = configureStore({
     reducer: counterSlice.reducer,
 });
-
-export const { increment, decrement } = counterSlice.actions;
-
-export default counterSlice.reducer;
