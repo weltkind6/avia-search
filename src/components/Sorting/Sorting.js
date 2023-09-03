@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {priceAscending} from "../redux/toolkitSlice";
+import {useDispatch} from "react-redux";
+import {priceAscending, priceDescending} from "../redux/toolkitSlice";
 
 const Sorting = () => {
     const [selectedOption, setSelectedOption] = useState(null);
@@ -13,15 +13,14 @@ const Sorting = () => {
         dispatch(priceAscending());
     };
 
+    const handlePriceDescending = () => {
+        dispatch(priceDescending());
+    };
+
     const dispatch = useDispatch();
-    const data = useSelector((state) => state.data);
-    console.log(data)
 
     return (
-        <div>
-            <div>
-                <button onClick={() => dispatch(priceAscending())}>sort</button>
-            </div>
+        <>
             <div>
                 <span>По возрастанию цены</span>
                 <input
@@ -42,7 +41,10 @@ const Sorting = () => {
                    name="option"
                    value="option2"
                    checked={selectedOption === 'option2'}
-                   onChange={handleOptionChange}
+                   onChange={() => {
+                       setSelectedOption('option2');
+                       handlePriceDescending();
+                   }}
                />
            </div>
             <div>
@@ -55,7 +57,7 @@ const Sorting = () => {
                     onChange={handleOptionChange}
                 />
             </div>
-        </div>
+        </>
 );
 };
 

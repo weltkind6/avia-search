@@ -45,11 +45,14 @@ const counterSlice = createSlice({
         priceAscending: state => {
             state.data.sort((a, b) => a.currPrice - b.currPrice);
         },
+        priceDescending: state => {
+            state.data.sort((a, b) => b.currPrice - a.currPrice);
+        },
 
     },
 });
 
-export const { increment, decrement, priceAscending } = counterSlice.actions;
+export const { priceAscending, priceDescending } = counterSlice.actions;
 
 export default counterSlice.reducer;
 
