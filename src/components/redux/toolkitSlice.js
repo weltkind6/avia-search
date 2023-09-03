@@ -1,4 +1,4 @@
-import {configureStore, createSlice} from '@reduxjs/toolkit';
+import {configureStore, createSlice, createSelector} from '@reduxjs/toolkit';
 import data from "../../mock/flights.json";
 
 const mockData = data.results.flights.map(({flight}) => flight)
@@ -16,7 +16,9 @@ const dataCopy = mockData.map(({ price, legs }) => {
     const departureDate = segments.flat().map(({ departureDate }) => departureDate);
     const arrivalDate = segments.flat().map(({ arrivalDate }) => arrivalDate);
     const travelDuration = segments.flat().map(({ travelDuration }) => travelDuration);
+    const travelDuration2 = travelDuration[0]
     const stops = segments.flat().map(({ stops }) => stops);
+    const stops2 = stops[0];
 
     return {
         currPrice: total.amount,
@@ -24,7 +26,9 @@ const dataCopy = mockData.map(({ price, legs }) => {
         depCity,
         departureDate,
         travelDuration,
+        travelDuration2,
         stops,
+        stops2,
         arrivalDate,
         arrAirport,
         depAirport,
@@ -48,11 +52,27 @@ const counterSlice = createSlice({
         priceDescending: state => {
             state.data.sort((a, b) => b.currPrice - a.currPrice);
         },
+        travelDuration: state => {
+            state.data.sort((a, b) => a.travelDuration2 - b.travelDuration2);
+        },
+        stops: state => {
+            state.data = state.data.filter(el => el.stops2!== 0);
+        }
 
     },
 });
 
-export const { priceAscending, priceDescending } = counterSlice.actions;
+const filterStops = createSelector(
+    state => state.data,
+    data => data.filter(el => el.stops2 !== 0)
+);
+
+export const {
+    priceAscending,
+    priceDescending,
+    travelDuration,
+    stops,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
 

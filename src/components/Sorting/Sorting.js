@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {priceAscending, priceDescending} from "../redux/toolkitSlice";
+import {priceAscending, priceDescending, travelDuration} from "../redux/toolkitSlice";
 
 const Sorting = () => {
+    const dispatch = useDispatch();
     const [selectedOption, setSelectedOption] = useState(null);
-
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
-    };
 
     const handlePriceAscending = () => {
         dispatch(priceAscending());
@@ -17,7 +14,9 @@ const Sorting = () => {
         dispatch(priceDescending());
     };
 
-    const dispatch = useDispatch();
+    const handleTravelDuration = () => {
+        dispatch(travelDuration());
+    };
 
     return (
         <>
@@ -54,7 +53,10 @@ const Sorting = () => {
                     name="option"
                     value="option3"
                     checked={selectedOption === 'option3'}
-                    onChange={handleOptionChange}
+                    onChange={() => {
+                        setSelectedOption('option3');
+                        handleTravelDuration();
+                    }}
                 />
             </div>
         </>

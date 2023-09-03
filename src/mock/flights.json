@@ -3479,7 +3479,7 @@
                                     "flightNumber": "1655",
                                     "techStopInfos": [],
                                     "departureDate": "2020-08-18T06:10:00",
-                                    "stops": 0,
+                                    "stops": 1,
                                     "servicesDetails": {
                                         "freeCabinLuggage": {},
                                         "paidCabinLuggage": {},
