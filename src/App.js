@@ -2,14 +2,10 @@ import './App.css';
 import flightsData from "./mock/flights.json";
 import SearchResult from "./components/SearchResults/SearchResults";
 
+export const storeData = flightsData.results.flights
+    .map(({flight}) => flight)
 
 function App() {
-
-    const currData = flightsData.results.flights
-        .map(({flight}) => flight)
-        .map(({price}) => price)
-        .map(({total}) => total)
-
     const currData1 = flightsData.results.flights
         .map(({flight}) => flight)
 
@@ -28,8 +24,6 @@ function App() {
         const arrivalDate = segments.flat().map(({ arrivalDate }) => arrivalDate);
         const travelDuration = segments.flat().map(({ travelDuration }) => travelDuration);
         const stops = segments.flat().map(({ stops }) => stops);
-        console.log('travelDuration', travelDuration)
-
 
         return {
             currPrice: total.amount,
@@ -47,11 +41,12 @@ function App() {
             executor
         };
     });
+    // const executorFilter = dataCopy.map(({executor}) => executor).filter(i => i[0].includes("TURK HAVA YOLLARI A.O."))
+    // console.log(executorFilter)
 
-  return (
+    return (
     <div className="wrapper">
-     <h1>Avia sales</h1>
-        <SearchResult data={currData} dataCopy={dataCopy}/>
+        <SearchResult dataCopy={dataCopy}/>
     </div>
   );
 }

@@ -1,0 +1,6 @@
+.wrapper {
+    outline: 1px solid;
+    z-index: 3;
+    background: deeppink;
+    position: relative;
+}
