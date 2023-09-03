@@ -8,7 +8,11 @@ const Companies = ({ dataCopy }) => {
     return (
         <div className={styles.wrapper}>
             <div>Авиакомпании:</div>
-            {uniqueExecutors.map(el => <div key={Math.random() * 1000}><input type="checkbox"/> - {el}</div>)}
+            {uniqueExecutors.map(el =>
+                <div key={Math.random() * 1000}>
+                    <input type="checkbox"/> - {el}
+                </div>)
+            }
         </div>
     );
 };
