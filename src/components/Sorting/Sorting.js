@@ -21,6 +21,7 @@ const Sorting = () => {
     return (
         <>
             <div>
+                <h2>Сортировать</h2>
                 <span>По возрастанию цены</span>
                 <input
                     type="checkbox"

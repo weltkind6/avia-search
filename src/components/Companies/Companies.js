@@ -15,7 +15,7 @@ const Companies = ({ dataCopy }) => {
 
     return (
         <div className={styles.wrapper}>
-            <div>Авиакомпании:</div>
+            <h2>Авиакомпании:</h2>
             {uniqueExecutors.map(el =>
                 <div key={Math.random() * 1000}>
                     <span>{el}</span>

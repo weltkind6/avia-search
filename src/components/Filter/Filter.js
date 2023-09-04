@@ -18,7 +18,7 @@ const Filter = () => {
 
     return (
         <div className={styles.wrapper}>
-            <span>Фильтровать</span>
+           <h2>Фильтровать</h2>
             <div>
                 <span>C остановками</span>
                 <input

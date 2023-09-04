@@ -10,10 +10,12 @@ const SearchResult = ({ dataCopy }) => {
 
     return (
         <div className={styles.wrapper}>
-            <Sorting />
-            <Filter />
-            <Companies dataCopy={dataCopy}/>
-            <Price />
+            <div className={styles.filters}>
+                <Sorting />
+                <Filter />
+                <Companies dataCopy={dataCopy}/>
+                <Price />
+            </div>
             <Ticket dataCopy={dataCopy}/>
         </div>
     );
