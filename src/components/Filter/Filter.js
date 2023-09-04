@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import styles from './styles.module.css'
-import {stops} from "../redux/toolkitSlice";
+import {stops, withoutStops} from "../redux/toolkitSlice";
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -9,12 +9,13 @@ const Filter = () => {
     const dataCopy = useSelector(state => state.data)
     console.log('dataCopy', dataCopy)
 
+
     const handleWithStops = () => {
         dispatch(stops());
     };
 
     const handleWithoutStops = () => {
-        dispatch(stops());
+        dispatch(withoutStops());
     };
 
     return (

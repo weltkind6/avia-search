@@ -11,8 +11,8 @@ const SearchResult = ({ dataCopy }) => {
         <div className={styles.wrapper}>
             <Sorting />
             <Filter />
-            <Ticket dataCopy={dataCopy}/>
             <Companies dataCopy={dataCopy}/>
+            <Ticket dataCopy={dataCopy}/>
         </div>
     );
 };

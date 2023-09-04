@@ -12,6 +12,7 @@ const dataCopy = mockData.map(({ price, legs }) => {
     const depAirportName = segments.flat().map(({ departureAirport }) => departureAirport.caption);
     const arrAirportName = segments.flat().map(({ arrivalAirport }) => arrivalAirport.caption);
     const executor = segments.flat().map(({ airline }) => airline.caption);
+    const executor2 = executor[0];
     const airline = segments.flat().map(({ operatingAirline }) => operatingAirline);
     const departureDate = segments.flat().map(({ departureDate }) => departureDate);
     const arrivalDate = segments.flat().map(({ arrivalDate }) => arrivalDate);
@@ -35,7 +36,8 @@ const dataCopy = mockData.map(({ price, legs }) => {
         arrAirportName,
         depAirportName,
         airline,
-        executor
+        executor,
+        executor2
     };
 });
 
@@ -44,6 +46,7 @@ const counterSlice = createSlice({
     name: 'counter',
     initialState: {
         data: dataCopy,
+        filteredData: dataCopy,
     },
     reducers: {
         priceAscending: state => {
@@ -56,22 +59,25 @@ const counterSlice = createSlice({
             state.data.sort((a, b) => a.travelDuration2 - b.travelDuration2);
         },
         stops: state => {
-            state.data = state.data.filter(el => el.stops2!== 0);
+            state.data = state.filteredData.filter(el => el.stops2!== 0);
+        },
+        withoutStops: state => {
+            state.data = state.filteredData.filter(el => el.stops2!== 1);
+        },
+        filterByCompany: (state, action) => {
+            state.data = state.filteredData.filter(item => item.executor2 === action.payload.company)
         }
 
     },
 });
 
-const filterStops = createSelector(
-    state => state.data,
-    data => data.filter(el => el.stops2 !== 0)
-);
-
 export const {
     priceAscending,
     priceDescending,
     travelDuration,
+    withoutStops,
     stops,
+    filterByCompany,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
