@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import styles from './styles.module.css'
 import {stops, withoutStops} from "../redux/toolkitSlice";
 
 const Filter = () => {
     const dispatch = useDispatch();
     const [selectedOption, setSelectedOption] = useState(null);
-    const dataCopy = useSelector(state => state.data)
-    console.log('dataCopy', dataCopy)
 
 
     const handleWithStops = () => {

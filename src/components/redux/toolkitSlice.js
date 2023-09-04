@@ -1,4 +1,4 @@
-import {configureStore, createSlice, createSelector} from '@reduxjs/toolkit';
+import {configureStore, createSlice} from '@reduxjs/toolkit';
 import data from "../../mock/flights.json";
 
 const mockData = data.results.flights.map(({flight}) => flight)
@@ -47,6 +47,8 @@ const counterSlice = createSlice({
     initialState: {
         data: dataCopy,
         filteredData: dataCopy,
+        priceFrom: null,
+        priceTo: null,
     },
     reducers: {
         priceAscending: state => {
@@ -66,7 +68,12 @@ const counterSlice = createSlice({
         },
         filterByCompany: (state, action) => {
             state.data = state.filteredData.filter(item => item.executor2 === action.payload.company)
-        }
+        },
+        filterByPrice: (state, action) => {
+            state.priceFrom = action.payload.priceFrom;
+            state.priceTo = action.payload.priceTo;
+            state.filteredData = state.data.filter(({currPrice}) => currPrice >= state.priceFrom && currPrice <= state.priceTo);
+        },
 
     },
 });
@@ -78,6 +85,7 @@ export const {
     withoutStops,
     stops,
     filterByCompany,
+    filterByPrice,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
