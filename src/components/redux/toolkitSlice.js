@@ -48,7 +48,8 @@ const counterSlice = createSlice({
         data: dataCopy,
         filteredData: dataCopy,
         priceData: dataCopy,
-        price: null,
+        priceFrom: null,
+        priceTo: null,
     },
     reducers: {
         priceAscending: state => {
@@ -70,9 +71,11 @@ const counterSlice = createSlice({
             state.data = state.filteredData.filter(item => item.executor2 === action.payload.company)
         },
         filterByPrice: (state, action) => {
-            state.price = parseInt(action.payload.price)
-            console.log(typeof state.price)
-            state.data = state.filteredData.filter(({currPrice}) => currPrice > state.price);
+            state.priceFrom = parseInt(action.payload.priceFrom)
+            state.priceTo = parseInt(action.payload.priceTo)
+            state.data =
+                state.filteredData.filter(({currPrice}) =>
+                    currPrice >= state.priceFrom && currPrice <= state.priceTo);
         },
 
     },

@@ -4,10 +4,11 @@ import {filterByPrice} from "../redux/toolkitSlice";
 
 const Price = () => {
     const dispatch = useDispatch();
-    const [price, setPrice] = useState('');
+    const [priceFrom, setPriceFrom] = useState('');
+    const [priceTo, setPriceTo] = useState('');
 
     const handleFilter = () => {
-        dispatch(filterByPrice({ price }));
+        dispatch(filterByPrice({ priceFrom, priceTo }));
     };
 
     return (
@@ -15,8 +16,13 @@ const Price = () => {
             <div>Цена от:</div>
             <input
                 type="number"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={priceFrom}
+                onChange={(e) => setPriceFrom(e.target.value)}
+            />
+            <input
+                type="number"
+                value={priceTo}
+                onChange={(e) => setPriceTo(e.target.value)}
             />
             <button onClick={handleFilter}>Фильтр</button>
         </div>
