@@ -72,7 +72,7 @@ const counterSlice = createSlice({
         filterByPrice: (state, action) => {
             state.price = parseInt(action.payload.price)
             console.log(typeof state.price)
-            state.data = state.data.filter(({currPrice}) => currPrice > state.price);
+            state.data = state.filteredData.filter(({currPrice}) => currPrice > state.price);
         },
 
     },
